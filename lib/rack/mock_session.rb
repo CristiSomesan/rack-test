@@ -25,6 +25,7 @@ module Rack
     end
 
     def request(uri, env)
+      binding.pry
       env["HTTP_COOKIE"] ||= cookie_jar.for(uri)
       @last_request = Rack::Request.new(env)
       status, headers, body = @app.call(@last_request.env)

@@ -54,7 +54,6 @@ module Rack
       # Example:
       #   get "/"
       def get(uri, params = {}, env = {}, &block)
-        binding.pry
         env = env_for(uri, env.merge(:method => "GET", :params => params))
         process_request(uri, env, &block)
       end
@@ -239,7 +238,6 @@ module Rack
       end
 
       def process_request(uri, env)
-        binding.pry
         uri = URI.parse(uri)
         uri.host ||= @default_host
 
